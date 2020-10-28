@@ -22,10 +22,8 @@ export class MoviesComponent {
   }
   public addMovie() {
     this.clickMessage = "YOU CLICKED ME " + this.baseUrl;
-    this.http.get('https://localhost:44378/movies/add').subscribe(error => console.error(error));
-    //this.http.get<Movies[]>(this.baseUrl + 'movies').subscribe(result => {
-      //this.movies = result;
-    //}, error => console.error(error));
+    this.http.get(this.baseUrl + 'movies/add').subscribe(error => console.error(error));
+
   }
 
 }

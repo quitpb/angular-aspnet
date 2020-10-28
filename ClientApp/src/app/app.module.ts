@@ -1,15 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+import { MatDatepickerModule,  } from '@angular/material/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatFormFieldModule, MatInputModule, MatOptionModule } from '@angular/material';
+import { MatButtonModule, MatCardModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { MoviesComponent } from './movies/movies.component';
+import { MoviesComponent } from './movies/display-all/movies.component';
+import { MoviesAddComponent } from './movies/movies-add/movies-add.component';
+import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,17 +27,23 @@ import { MoviesComponent } from './movies/movies.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    MoviesComponent
+    MoviesComponent,
+    MoviesAddComponent,
+    MoviesEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    MatFormFieldModule, MatInputModule, MatOptionModule,
+    MatDatepickerModule, BrowserAnimationsModule, MatButtonModule,
+    MatNativeDateModule, MatSelectModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'movies', component: MoviesComponent },
+      { path: 'movies/add', component: MoviesAddComponent },
+      { path: 'movies/edit', component: MoviesEditComponent },
     ])
   ],
   providers: [],

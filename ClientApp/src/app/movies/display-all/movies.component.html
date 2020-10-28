@@ -1,5 +1,6 @@
 
-<button class="btn btn-primary" (click)="addMovie()">AddMovie</button>
+<button class="btn btn-primary" (click)="addMovie()" [routerLink]="['/movies/add']">AddMovie</button>
+<p *ngIf="!movies"><em>Loading... nb</em></p>
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
   <thead>
     <tr>
