@@ -9,7 +9,8 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 
 import { MatFormFieldModule, MatInputModule, MatOptionModule } from '@angular/material';
-import { MatButtonModule, MatCardModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,6 +21,7 @@ import { MoviesComponent } from './movies/display-all/movies.component';
 import { MoviesAddComponent } from './movies/movies-add/movies-add.component';
 import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,7 @@ import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component'
     FetchDataComponent,
     MoviesComponent,
     MoviesAddComponent,
-    MoviesEditComponent
+    MoviesEditComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,11 +39,13 @@ import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component'
     MatFormFieldModule, MatInputModule, MatOptionModule,
     MatDatepickerModule, BrowserAnimationsModule, MatButtonModule,
     MatNativeDateModule, MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'movies', component: MoviesComponent },
+      { path: 'display-movies', component: MoviesComponent },
       { path: 'movies/add', component: MoviesAddComponent },
       { path: 'movies/edit', component: MoviesEditComponent },
     ])

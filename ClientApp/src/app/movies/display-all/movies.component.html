@@ -1,5 +1,5 @@
 
-<button class="btn btn-primary" (click)="addMovie()" [routerLink]="['/movies/add']">AddMovie</button>
+
 <p *ngIf="!movies"><em>Loading... nb</em></p>
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
   <thead>
@@ -18,8 +18,9 @@
       <td>{{ movie.releasedate }}</td>
       <td>{{ movie.director }}</td>
       <td>{{ movie.description }}</td>
-      <td><a href='https://get.asp.net/'>Edit</a></td>
+      <td><button mat-button color="primary">Edit</button></td>
+      <td><button mat-button color="warn" (click)="deleteMovie(movie.name)">Delete</button></td>
     </tr>
   </tbody>
 </table>
-<div>{{clickMessage}}</div>
+<button class="btn btn-primary" (click)="addMovie()" [routerLink]="['/movies/add']">AddMovie</button>

@@ -24,8 +24,10 @@ namespace my_new_app.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieModel>>> GetMovieModel()
+        public  async Task<ActionResult<IEnumerable<MovieModel>>> GetMovieModel()
         {
+            
+            
             return await _context.MovieModel.ToListAsync();
         }
 
@@ -34,5 +36,15 @@ namespace my_new_app.Controllers
         {
             return await _context.MovieModel.ToListAsync();
         }
+
+        [HttpPost("{add}")]
+        public async Task<ActionResult<IEnumerable<MovieModel>>> SubmitMovieModel([FromBody] MovieModel movieModel)
+        {
+            Console.WriteLine("Server received POST");
+            _context.MovieModel.Add(movieModel);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetMovieModel", new { id = movieModel.Id }, movieModel);
+        }
+
     }
 }

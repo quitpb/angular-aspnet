@@ -1,39 +1,41 @@
-<h2>Movie</h2>
+
 <div class="example-container">
-  <mat-form-field appearance="fill">
-    <mat-label>Title</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <br />
-  <mat-form-field appearance="fill">
-    <mat-label>Choose genre</mat-label>
-    <mat-select>
-      <mat-option value="comedy">comedy</mat-option>
-      <mat-option value="action">action</mat-option>
-      <mat-option value="adventure">adventure</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br />
-  <mat-form-field appearance="fill">
-    <mat-label>Director</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <br />
-  <mat-form-field appearance="fill">
-    <mat-label>Release date</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <br />
-  <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-</div>
-<div>
-  <button mat-button color="primary">Submit</button>
-  <button mat-button color="warn" [routerLink]="['/movies']">Cancel</button>
+  <form [formGroup]="movieForm" (ngSubmit)="submitMovie()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Choose genre</mat-label>
+      <mat-select formControlName="genre">
+        <mat-option value="comedy">comedy</mat-option>
+        <mat-option value="action">action</mat-option>
+        <mat-option value="adventure">adventure</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Director</mat-label>
+      <input matInput formControlName="director">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Release date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="release">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <div>
+      <button mat-button color="primary" type="submit">Submit</button>
+      <button mat-button color="warn" [routerLink]="['/movies']">Cancel</button>
+    </div>
+  </form>
 </div>
 
  
