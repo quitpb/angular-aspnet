@@ -3,12 +3,12 @@
   <form [formGroup]="movieForm" (ngSubmit)="submitMovie()">
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" required>
     </mat-form-field>
     <br />
     <mat-form-field appearance="fill">
       <mat-label>Choose genre</mat-label>
-      <mat-select formControlName="genre">
+      <mat-select formControlName="genre" required>
         <mat-option value="comedy">comedy</mat-option>
         <mat-option value="action">action</mat-option>
         <mat-option value="adventure">adventure</mat-option>
@@ -22,7 +22,7 @@
     <br />
     <mat-form-field appearance="fill">
       <mat-label>Release date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="release">
+      <input matInput [matDatepicker]="picker" formControlName="releasedate" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -32,10 +32,11 @@
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
     <div>
-      <button mat-button color="primary" type="submit">Submit</button>
-      <button mat-button color="warn" [routerLink]="['/movies']">Cancel</button>
+      <button mat-button color="primary" type="submit" >Submit</button>
+      <button mat-button color="warn" [routerLink]="['/']">Cancel</button>
     </div>
   </form>
+  <div *ngIf="invalidForm" style="color:red"> Fill out the required field(s)</div>
 </div>
 
  

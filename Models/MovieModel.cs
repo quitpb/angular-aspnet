@@ -12,7 +12,7 @@ namespace my_new_app.Models
         //[Remote("VerifyMovie", "Movies", HttpMethod = "POST", ErrorMessage = "Movie already exists in database.")]
         public string Name { get; set; }
         public string Director { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
         public string Genre { get; set; }
         public string Description { get; set; }
 

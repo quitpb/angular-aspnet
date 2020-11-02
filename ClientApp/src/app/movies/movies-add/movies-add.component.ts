@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies-add',
@@ -11,11 +12,12 @@ import { Observable } from 'rxjs';
 })
 
 export class MoviesAddComponent implements OnInit {
+  invalidForm: boolean = false;
   movieForm = new FormGroup({
-    name: new FormControl(''),
-    genre: new FormControl(''),
+    name: new FormControl("", Validators.required),
+    genre: new FormControl('', Validators.required),
     director: new FormControl(''),
-    release: new FormControl(''),
+    releasedate: new FormControl(''),
     description: new FormControl(''),
   });
 
@@ -29,6 +31,7 @@ export class MoviesAddComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     @Inject('BASE_URL') private baseUrl: string) {
 
   }
@@ -38,11 +41,17 @@ export class MoviesAddComponent implements OnInit {
   }
 
   public submitMovie() {
-    const body = JSON.stringify(this.movieForm.value)
-    this.http.post<any>(this.baseUrl + 'movies/add', body, httpOptions).subscribe(result => {
-      console.log(result);
-    }, error => console.error(error));
-    
+    if (this.movieForm.valid) {
+      const body = JSON.stringify(this.movieForm.value)
+      this.http.post<any>(this.baseUrl + 'movies/add', body, httpOptions).subscribe(result => {
+        console.log(result);
+      }, error => console.error(error));
+      this.movieForm.reset();
+      this.router.navigate(['']);
+    }
+    else {
+      this.invalidForm = true;
+    }
   }
 
 }
