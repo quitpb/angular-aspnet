@@ -26,13 +26,21 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\**" />
+    <Compile Remove="MovieApp\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\**" />
+    <Content Remove="MovieApp\**" />
+    <EmbeddedResource Remove="ClientApp\**" />
+    <EmbeddedResource Remove="MovieApp\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\**" />
+    <None Remove="MovieApp\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\movies\edit\" />
+    <None Remove="my-new-app\dockerignore" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
