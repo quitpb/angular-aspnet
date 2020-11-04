@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  moviesapp:
+    build:
+      context: ./MoviesApp/
+      dockerfile: Dockerfile
+    container_name: moviesapp-build
+    ports:
+      - "8080:80"
+    
+
+  moviesapi:
+    build:
+      context: . #dotnet commands executed from this dir
+      dockerfile: MoviesAPI/Dockerfile
+    container_name: moviesapi-build
